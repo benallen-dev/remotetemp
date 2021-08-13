@@ -18,5 +18,14 @@ jobs:
         pip install platformio
     - name: Install library dependencies
       run: platformio lib -g install 1
-    - name: Run PlatformIO
-      run: platformio run ./remotetemp-sensor
+    
+    - name: Run PlatformIO (receiver)
+      run: |
+        pushd remotetemp-receiver
+        platformio run
+        popd
+    - name: Run PlatformIO (sensor)
+      run: |
+        pushd remotetemp-sensor
+        platformio run
+        popd
